@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="restaurant_menu_screenshot-3.webp" type="image/x-icon">
+    <title>Self Dashboard</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .buttons {
+            width: 30%;
+            background-color: beige;
+        }
+
+        .navButton {
+            width: 100%;
+            height: 60px;
+            font-size: 20px;
+            background-color: blanchedalmond;
+            text-transform: capitalize;
+            margin: 2px 0 0 0;
+        }
+
+        .navButton:hover {
+            background-color: rgb(254, 194, 194);
+            cursor: pointer;
+        }
+
+        .navButton.active {
+            background-color: red;
+        }
+
+        .contents {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: antiquewhite;
+        }
+
+        .content {
+            border: 5px double black;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            height: 420px;
+            font-size: 35px;
+            text-decoration: underline
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="buttons">
+            <button class="navButton" onclick="showContent(event , 'Dashboard')" id="openDefault">dashboard</button>
+            <button class="navButton" onclick="showContent(event , 'properties')">properties</button>
+            <button class="navButton" onclick="showContent(event , 'account')">account</button>
+            <button class="navButton" onclick="showContent(event , 'profile')">profile</button>
+            <button class="navButton" onclick="showContent(event , 'media')">media</button>
+            <button class="navButton" onclick="showContent(event , 'more')">more</button>
+            <button class="navButton" onclick="showContent(event , 'logout')">logout</button>
+        </div>
+        <div class="contents">
+            <div class="content" id="Dashboard">This is the Dashboard page.</div>
+            <div class="content" id="properties">This is the Properties page.</div>
+            <div class="content" id="account">This is the Account page.</div>
+            <div class="content" id="profile">This is the Profile page.</div>
+            <div class="content" id="media">This is the Media page.</div>
+            <div class="content" id="more">This is the More page.</div>
+            <div class="content" id="logout">This is the LogOut page.</div>
+        </div>
+    </div>
+</body>
+<script>
+
+
+    function showContent(evt, element_id) {
+        var i, contents, navButtons;
+
+        contents = document.getElementsByClassName("content");
+        for (i = 0; i < contents.length; i++) {
+            contents[i].style.display = 'none';
+        }
+
+        navButtons = document.getElementsByClassName("navButton");
+        for (i = 0; i < navButtons.length; i++) {
+            navButtons[i].classList.remove("active");
+        }
+
+        document.getElementById(element_id).style.display = 'flex';
+        // evt.classList.add("active")
+        evt.currentTarget.classList.add("active")
+    }
+
+    document.getElementById("openDefault").click();
+</script>
+
+</html>
